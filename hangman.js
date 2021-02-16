@@ -1,19 +1,10 @@
-// 1. Set up the word instance property as an array of lower case letters
-// 2. Set up another instance property to store guessed letters
-// 3. Create a method that gives you the word puzzle back
-
-// No guesses? -> ***
-// Guessed "c", "b", and "t"? -> c*t
-
-
 const Hangman = function (word, remainingGuesses) {
     this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
-    this.guessedLetters = ['d']
+    this.guessedLetters = []
 }
 
 //Method that gives puzzle back
-
 Hangman.prototype.getPuzzle = function () {
     let puzzle = ''
 
@@ -28,8 +19,29 @@ Hangman.prototype.getPuzzle = function () {
     return puzzle
 }
 
+//Method to make guesses
+Hangman.prototype.makeGuess = function (guess) {
+    guess = guess.toLowerCase()
+    const isUnique = !this.guessedLetters.includes(guess)
+    const isWrongGuess = !this.word.includes(guess)
+    
+    if (isUnique) {
+        this.guessedLetters.push(guess)
+    }
+
+    if (isUnique && isWrongGuess) {
+        this.remainingGuesses--
+    }
+}
+
 const game1 = new Hangman('Dog', 2)
+game1.makeGuess('d')
+game1.makeGuess('r')
+game1.makeGuess('s')
 console.log(game1.getPuzzle())
+console.log(game1.remainingGuesses)
 
 const game2 = new Hangman('Hello World', 4)
+game2.makeGuess('l')
 console.log(game2.getPuzzle())
+console.log(game2.remainingGuesses)
