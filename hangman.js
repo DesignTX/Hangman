@@ -34,14 +34,12 @@ Hangman.prototype.makeGuess = function (guess) {
     }
 }
 
-const game1 = new Hangman('Dog', 2)
-game1.makeGuess('d')
-game1.makeGuess('r')
-game1.makeGuess('s')
+const game1 = new Hangman('Hello World', 4)
 console.log(game1.getPuzzle())
 console.log(game1.remainingGuesses)
 
-const game2 = new Hangman('Hello World', 4)
-game2.makeGuess('l')
-console.log(game2.getPuzzle())
-console.log(game2.remainingGuesses)
+//registers key presses
+window.addEventListener('keypress', function (e) {
+    //CharCode deprecated, grab key straight from property eg; e.key
+    console.log(e.key)
+})
