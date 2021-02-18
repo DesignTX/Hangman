@@ -7,8 +7,22 @@ const Hangman = function (word, remainingGuesses) {
 
 //Method to calculate what status we are currently in (playing or game over)
 Hangman.prototype.calculateStatus = function () {
+    let finished = true
+
+    this.word.forEach((letter) => {
+        if (this.guessedLetters.includes(letter)) {
+           
+        } else {
+            finished = false
+        }
+    })
+
     if (this.remainingGuesses === 0) {
         this.status = 'failed'
+    } else if (finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
     }
 }
 
