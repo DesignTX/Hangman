@@ -7,6 +7,7 @@ guessElement.textContent = game1.remainingGuesses
 
 console.log(game1.getPuzzle())
 console.log(game1.remainingGuesses)
+console.log(game1.status)
 
 //registers key presses
 window.addEventListener('keypress', function (e) {
@@ -16,4 +17,5 @@ window.addEventListener('keypress', function (e) {
     game1.makeGuess(guess)
     puzzleElement.textContent = game1.getPuzzle()
     guessElement.textContent = game1.remainingGuesses
+    console.log(game1.status)
 })
